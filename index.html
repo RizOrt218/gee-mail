@@ -31,14 +31,25 @@
            mailDate.id = 'dateGee';
            mailDate.innerHTML = window.geemails[i].date;
            mailDiv.appendChild(mailDate);
+
+    //ADDED DIV FOR BODY     
+          var bodyContent = document.createElement('div');
+           bodyContent.id = 'bodyDiv';
+           main.appendChild(bodyContent);
+
+    //ADDED BUTTON TO CLICK AND SHOW BODY CONTENT   
+          var btn = document.createElement('button');
+            btn.innerHTML = 'Read Me';
+           bodyContent.appendChild(btn);
+          
                                        
     //CREATE AN ELEMENT IN DOM FOR BODY DATA
           var mailBody = document.createElement('p');
           mailBody.className = 'bodyGee';
           mailBody.innerHTML = window.geemails[i].body;
-          mailDiv.appendChild(mailBody).style.display = 'none';
+          mailDiv.appendChild(mailBody).style.display = 'none';	//THIS HIDES THE BODY MESSAGES
     
-    //ADD EVENTLISTENER 'CLICK' TO VIEW AND HIDE BODY OF MESSAGE
+    //ADD EVENTLISTENER 'CLICK' BUTTON TO VIEW AND HIDE BODY OF MESSAGE
           
          } //END OF GEEMAIL DATA LOOP
 
