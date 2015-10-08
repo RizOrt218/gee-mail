@@ -15,10 +15,10 @@
           main.appendChild(mailDiv);
           
     //CREATE AN ELEMENT IN DOM FOR SENDER DATA
-          var mailSender = document.createElement('h3');
-          mailSender.id = 'senderGee';
-          mailSender.innerHTML = window.geemails[i].sender;
-          mailDiv.appendChild(mailSender);
+          var mailSender = document.createElement('h3');			//CREATED HEADER3 FOR EMAIL SENDER
+          mailSender.id = 'senderGee';								//GAVE H3 AND ID OF 'SENDERGEE'
+          mailSender.innerHTML = window.geemails[i].sender;			//ACCESSED DOM TO LOAD SENDER ARRAYS
+          mailDiv.appendChild(mailSender);							//ATTACHED SENDER DATA TO DOM DIV
     
     //CREATE AN ELEMENT IN DOM FOR SUBJECT DATA
           var mailSubject = document.createElement('h4');
@@ -37,8 +37,9 @@
           mailBody.className = 'bodyGee';
           mailBody.innerHTML = window.geemails[i].body;
           mailDiv.appendChild(mailBody);
+    
+    //ADD EVENTLISTENER 'CLICK' TO VIEW AND HIDE BODY OF MESSAGE
           
-        
          } //END OF GEEMAIL DATA LOOP
 
       } //END OF LOADINBOX FUNCTION
