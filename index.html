@@ -4,15 +4,55 @@
 		<link href="css/style.css" rel="stylesheet" media="screen">
     <script>
       window.onload = function(){
-        // ALL OF YOUR JAVASCRIPT CODE SHOULD GO HERE. 
-        // We have to use window.onload so your JavaScript doesn't execute until the page has loaded and all HTML has been downloaded to your browser
+   
+        function loadInbox(emails){
+    //ACCESS GEEMAIL DATA      
+         for (var i = 0; i < window.geemails.length; i++){
+           
+    //CREATE DIV w/ ID arrayDiv
+          var mailDiv = document.createElement('div');
+          mailDiv.id = 'arrayDiv';
+          main.appendChild(mailDiv);
+          
+    //CREATE AN ELEMENT IN DOM FOR SENDER DATA
+          var mailSender = document.createElement('h3');
+          mailSender.id = 'senderGee';
+          mailSender.innerHTML = window.geemails[i].sender;
+          mailDiv.appendChild(mailSender);
+    
+    //CREATE AN ELEMENT IN DOM FOR SUBJECT DATA
+          var mailSubject = document.createElement('h4');
+          mailSubject.id = 'subjectGee';
+          mailSubject.innerHTML = window.geemails[i].subject;
+          mailDiv.appendChild(mailSubject);
+
+    //CREATE AN ELEMENT IN DOM FOR DATE 
+           var mailDate = document.createElement('p');
+           mailDate.id = 'dateGee';
+           mailDate.innerHTML = window.geemails[i].date;
+           mailDiv.appendChild(mailDate);
+                                       
+    //CREATE AN ELEMENT IN DOM FOR BODY DATA
+          var mailBody = document.createElement('p');
+          mailBody.className = 'bodyGee';
+          mailBody.innerHTML = window.geemails[i].body;
+          mailDiv.appendChild(mailBody);
+          
         
-      };
+         } //END OF GEEMAIL DATA LOOP
+
+      } //END OF LOADINBOX FUNCTION
+        
+         loadInbox(window.geemails);
+        
+      }; //END OF WINDOW.ONLOAD 
     </script>
 	</head>
 	<body>
 		<div class="container" id="main">
-			Build Me!
+	        
 		</div>
+      
+    
 	</body>
 </html>
