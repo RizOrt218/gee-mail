@@ -49,13 +49,6 @@
             mailDate.innerHTML = emails[i].date;
             mailHeader.appendChild(mailDate);
 
-   
-    //ADDED BUTTON TO CLICK AND SHOW BODY CONTENT   
-          // var btn = document.createElement('button');
-          //   btn.innerHTML = 'Read Me';
-          //   btn.id = 'clickMe';
-          //   mailDiv.appendChild(btn);
-     
      //ADDED DIV FOR BODY     
           var bodyContent = document.createElement('div');
             bodyContent.className = 'bodyDiv';
@@ -68,6 +61,7 @@
             mailBody.innerHTML = emails[i].body;
             bodyContent.appendChild(mailBody);	
 
+    //EVENT SHOW AND HIDE BODY!
           var showBody = document.getElementById('main')[0];
             bodyContent.querySelectorAll('p')[0].style.display ='none';
             mailDiv.addEventListener('click', function(){
@@ -78,14 +72,18 @@
             bodyContent.addEventListener('mouseout', function(){
                this.querySelectorAll('p')[0].style.display = 'none';
              })
-          
-           
-    
-    //ADD EVENTLISTENER 'CLICK' BUTTON TO VIEW AND HIDE BODY OF MESSAGE
-          
+   
          } //END OF GEEMAIL DATA LOOP
       } //END OF LOADINBOX FUNCTION
           loadInbox(window.geemails);
+         
+         function loadNewMsg(){
+            var n = getNewMessage();
+            loadInbox(n);
+            
+          }
+          var i = setInterval(loadNewMsg(), 1000);
+           
         
       }; //END OF WINDOW.ONLOAD 
     </script>
@@ -94,6 +92,7 @@
     <header>
       <h1>GeeMail</h1>
     </header>
+      <h3>Inbox <span id='total'></span></h3>
   		<div class="container" id="main">
   	        
   		</div>
