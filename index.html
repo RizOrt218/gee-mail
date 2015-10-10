@@ -11,59 +11,92 @@
            
     //CREATE DIV w/ ID arrayDiv
           var mailDiv = document.createElement('div');
-          mailDiv.id = 'arrayDiv';
-          main.appendChild(mailDiv);
+            mailDiv.id = 'arrayDiv';
+            main.appendChild(mailDiv);
+
+    //CREATE ul for sender/subject and date so 
+    //that I can display: inline them
+          var mailHeader = document.createElement('ul');
+            mailHeader.className = 'mailHeader';
+            mailDiv.appendChild(mailHeader);
+
+    //THIS FUNCTION CHANGES BCKGRD COLOR WHEN MOUSEOVER/OUT
+          var hoverHeader = document.getElementById('arrayDiv');
+           mailHeader.addEventListener('mouseover', function(){
+             this.style.color = '#989393';  
+           })
+           
+          var hoverHeader = document.getElementById('arrayDiv');
+           mailHeader.addEventListener('mouseout', function(){
+             this.style.color = 'inherit';  
+           })
           
     //CREATE AN ELEMENT IN DOM FOR SENDER DATA
-          var mailSender = document.createElement('h3');		//CREATED HEADER3 FOR EMAIL SENDER
-          mailSender.id = 'senderGee';							//GAVE H3 AN ID OF 'SENDERGEE'
-          mailSender.innerHTML = window.geemails[i].sender;		//ACCESSED DOM TO LOAD SENDER ARRAYS
-          mailDiv.appendChild(mailSender);						//ATTACHED SENDER DATA TO DOM DIV
+          var mailSender = document.createElement('li');		//CREATED HEADER3 FOR EMAIL SENDER
+            mailSender.id = 'senderGee';							//GAVE H3 AN ID OF 'SENDERGEE'
+            mailSender.innerHTML = emails[i].sender;		//ACCESSED DOM TO LOAD SENDER ARRAYS
+            mailHeader.appendChild(mailSender);						//ATTACHED SENDER DATA TO DOM DIV
     
     //CREATE AN ELEMENT IN DOM FOR SUBJECT DATA
-          var mailSubject = document.createElement('h4');
-          mailSubject.id = 'subjectGee';
-          mailSubject.innerHTML = window.geemails[i].subject;
-          mailDiv.appendChild(mailSubject);
+          var mailSubject = document.createElement('li');
+            mailSubject.id = 'subjectGee';
+            mailSubject.innerHTML = emails[i].subject;
+            mailHeader.appendChild(mailSubject);
 
     //CREATE AN ELEMENT IN DOM FOR DATE 
-           var mailDate = document.createElement('p');
-           mailDate.id = 'dateGee';
-           mailDate.innerHTML = window.geemails[i].date;
-           mailDiv.appendChild(mailDate);
+           var mailDate = document.createElement('li');
+            mailDate.id = 'dateGee';
+            mailDate.innerHTML = emails[i].date;
+            mailHeader.appendChild(mailDate);
 
-    //ADDED DIV FOR BODY     
-          var bodyContent = document.createElement('div');
-           bodyContent.id = 'bodyDiv';
-           main.appendChild(bodyContent);
-
+   
     //ADDED BUTTON TO CLICK AND SHOW BODY CONTENT   
-          var btn = document.createElement('button');
-            btn.innerHTML = 'Read Me';
-           bodyContent.appendChild(btn);
-          
+          // var btn = document.createElement('button');
+          //   btn.innerHTML = 'Read Me';
+          //   btn.id = 'clickMe';
+          //   mailDiv.appendChild(btn);
+     
+     //ADDED DIV FOR BODY     
+          var bodyContent = document.createElement('div');
+            bodyContent.className = 'bodyDiv';
+            mailDiv.appendChild(bodyContent);
+      
                                        
     //CREATE AN ELEMENT IN DOM FOR BODY DATA
           var mailBody = document.createElement('p');
-          mailBody.className = 'bodyGee';
-          mailBody.innerHTML = window.geemails[i].body;
-          mailDiv.appendChild(mailBody).style.display = 'none';	//THIS HIDES THE BODY MESSAGES
+            mailBody.id = 'bodyGee';
+            mailBody.innerHTML = emails[i].body;
+            bodyContent.appendChild(mailBody);	
+
+          var showBody = document.getElementById('main')[0];
+            bodyContent.querySelectorAll('p')[0].style.display ='none';
+            mailDiv.addEventListener('click', function(){
+                this.querySelectorAll('p')[0].style.display = 'block';
+              })
+            
+          var hideBody = document.getElementById('main')[0];
+            bodyContent.addEventListener('mouseout', function(){
+               this.querySelectorAll('p')[0].style.display = 'none';
+             })
+          
+           
     
     //ADD EVENTLISTENER 'CLICK' BUTTON TO VIEW AND HIDE BODY OF MESSAGE
           
          } //END OF GEEMAIL DATA LOOP
-
       } //END OF LOADINBOX FUNCTION
-        
-         loadInbox(window.geemails);
+          loadInbox(window.geemails);
         
       }; //END OF WINDOW.ONLOAD 
     </script>
 	</head>
 	<body>
-		<div class="container" id="main">
-	        
-		</div>
+    <header>
+      <h1>GeeMail</h1>
+    </header>
+  		<div class="container" id="main">
+  	        
+  		</div>
       
     
 	</body>
