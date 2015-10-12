@@ -12,6 +12,8 @@ body {
 .container {
   margin-left: 180px;
   margin-top: 5px;
+  overflow: scroll;
+  height: 500px;
 }
 
 #arrayDiv { 

@@ -20,22 +20,28 @@
             mailHeader.className = 'mailHeader';
             mailDiv.appendChild(mailHeader);
 
-    //THIS FUNCTION CHANGES BCKGRD COLOR WHEN MOUSEOVER/OUT
-          var hoverHeader = document.getElementById('arrayDiv');
+    //THIS FUNCTION CHANGES FONT COLOR WHEN MOUSEOVER/OUT
            mailHeader.addEventListener('mouseover', function(){
+                //add event to var mailHeader so when it's mouseover, font color will change
              this.style.color = '#989393';  
+                //when mouse hovers 'this' font color will change
            });
-           
-          var hHeader = document.getElementById('arrayDiv');
            mailHeader.addEventListener('mouseout', function(){
+                //add event when mouseout of mailHeader font will go back to it's original style
              this.style.color = 'inherit';  
+                //mouseout event will access css style to change color
+                //inherit- goes back to it's original style
            });
           
     //CREATE AN ELEMENT IN DOM FOR SENDER DATA
-          var mailSender = document.createElement('li');		
-            mailSender.id = 'senderGee';							
-            mailSender.innerHTML = message[i].sender;		
+          var mailSender = document.createElement('li');
+                //created first list with variable mailSender		
+            mailSender.id = 'senderGee';	
+                //gave mailSender and id of senderGee						
+            mailSender.innerHTML = message[i].sender;
+                //HTML will access the sender var in window.geemail for loop		
             mailHeader.appendChild(mailSender);
+                //random sender will be printed in this 'li' 
     
     //CREATE AN ELEMENT IN DOM FOR SUBJECT DATA
           var mailSubject = document.createElement('li');
@@ -63,14 +69,19 @@
 
     //EVENT SHOW AND HIDE BODY!
           var showBody = document.getElementById('main')[0];
+                //assigned 'main' in HTML a variable of showBody
             bodyContent.querySelectorAll('p')[0].style.display ='none';
+                //this will find all 'p' form in variable bodyContent and access css to display: none
             mailDiv.addEventListener('click', function(){
+                //added an event to variable mailDiv for a click function
                 this.querySelectorAll('p')[0].style.display = 'block';
+                //this--when user clicks on any 'mailDiv' section only that certain 'p' form will show
               });
             
           var hideBody = document.getElementById('main')[0];
             bodyContent.addEventListener('mouseout', function(){
                this.querySelectorAll('p')[0].style.display = 'none';
+                //when user's mouseout of the 'p' section, content will not display
              });
 
          } //END OF GEEMAIL DATA LOOP
@@ -88,9 +99,18 @@
                 //append text node 'totalCount' to 'count'
     
     //FUNCTION THAT WILL SETINTERVAL TO LOAD NEW MESSAGE
-    
+          setInterval(function(getNewMessage) {
+            var getEm = document.getElementById('arrayDiv');
+              main.appendChild(getEm);
+           
+           
+          count.innerHTML = inboxTotal++;
+                //updating inboxTotal every whatever seconds. 
+                //Computer counts in milliseconds. Why? idk.It's just set that way.
           
-        
+   
+         }, 7000);   
+   
       }; //END OF WINDOW.ONLOAD 
     </script>
 	</head>
