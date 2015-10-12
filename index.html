@@ -5,7 +5,7 @@
     <script>
       window.onload = function(){
    
-        function loadInbox(emails){
+        function loadInbox(message){
     //ACCESS GEEMAIL DATA      
          for (var i = 0; i < window.geemails.length; i++){
            
@@ -24,29 +24,29 @@
           var hoverHeader = document.getElementById('arrayDiv');
            mailHeader.addEventListener('mouseover', function(){
              this.style.color = '#989393';  
-           })
+           });
            
-          var hoverHeader = document.getElementById('arrayDiv');
+          var hHeader = document.getElementById('arrayDiv');
            mailHeader.addEventListener('mouseout', function(){
              this.style.color = 'inherit';  
-           })
+           });
           
     //CREATE AN ELEMENT IN DOM FOR SENDER DATA
-          var mailSender = document.createElement('li');		//CREATED HEADER3 FOR EMAIL SENDER
-            mailSender.id = 'senderGee';							//GAVE H3 AN ID OF 'SENDERGEE'
-            mailSender.innerHTML = emails[i].sender;		//ACCESSED DOM TO LOAD SENDER ARRAYS
-            mailHeader.appendChild(mailSender);						//ATTACHED SENDER DATA TO DOM DIV
+          var mailSender = document.createElement('li');		
+            mailSender.id = 'senderGee';							
+            mailSender.innerHTML = message[i].sender;		
+            mailHeader.appendChild(mailSender);
     
     //CREATE AN ELEMENT IN DOM FOR SUBJECT DATA
           var mailSubject = document.createElement('li');
             mailSubject.id = 'subjectGee';
-            mailSubject.innerHTML = emails[i].subject;
+            mailSubject.innerHTML = message[i].subject;
             mailHeader.appendChild(mailSubject);
 
     //CREATE AN ELEMENT IN DOM FOR DATE 
            var mailDate = document.createElement('li');
             mailDate.id = 'dateGee';
-            mailDate.innerHTML = emails[i].date;
+            mailDate.innerHTML = message[i].date;
             mailHeader.appendChild(mailDate);
 
      //ADDED DIV FOR BODY     
@@ -58,7 +58,7 @@
     //CREATE AN ELEMENT IN DOM FOR BODY DATA
           var mailBody = document.createElement('p');
             mailBody.id = 'bodyGee';
-            mailBody.innerHTML = emails[i].body;
+            mailBody.innerHTML = message[i].body;
             bodyContent.appendChild(mailBody);	
 
     //EVENT SHOW AND HIDE BODY!
@@ -66,24 +66,30 @@
             bodyContent.querySelectorAll('p')[0].style.display ='none';
             mailDiv.addEventListener('click', function(){
                 this.querySelectorAll('p')[0].style.display = 'block';
-              })
+              });
             
           var hideBody = document.getElementById('main')[0];
             bodyContent.addEventListener('mouseout', function(){
                this.querySelectorAll('p')[0].style.display = 'none';
-             })
-   
+             });
+
          } //END OF GEEMAIL DATA LOOP
       } //END OF LOADINBOX FUNCTION
           loadInbox(window.geemails);
-         
-         function loadNewMsg(){
-            var n = getNewMessage();
-            loadInbox(n);
-            
-          }
-          var i = setInterval(loadNewMsg(), 1000);
-           
+    
+    //SHOW INBOX COUNT AND APPEND TO THE ID GIVEN IN HTML
+          var count = document.getElementById('count');
+                //assign id 'count' to a variable so I can use it to add the total inbox count.
+          var inboxTotal = window.geemails.length;
+                //declare the inbox total
+          var totalCount = document.createTextNode(inboxTotal);
+                //creating text node with variable totalCnt
+           count.appendChild(totalCount);
+                //append text node 'totalCount' to 'count'
+    
+    //FUNCTION THAT WILL SETINTERVAL TO LOAD NEW MESSAGE
+    
+          
         
       }; //END OF WINDOW.ONLOAD 
     </script>
