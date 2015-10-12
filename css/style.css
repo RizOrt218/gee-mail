@@ -1,7 +1,6 @@
 header {
-  text-shadow: 2px 2px #ABA9A9;
-  text-align: center;
-  font-family: Gill Sans, sans-serif, cursive;
+  color: #FFF;
+  padding-left: 20px;
 }
 
 body {
@@ -11,13 +10,12 @@ body {
 }
 
 .container {
-  margin: 0px 10%;
+  margin-left: 180px;
+  margin-top: 5px;
 }
 
-#arrayDiv {
-  
+#arrayDiv { 
   padding: 10px;
-  border: 2px solid navy;
   margin: 0px;
   font-family: Helvetica, sans-serif;
   background-color: #D1E1EC;
@@ -33,6 +31,26 @@ ul li {
 ul {
   margin: 5px;
 }
+
+.inBox {
+  float: left;
+  border: 1px solid white;
+  font-family: Gill Sans, sans-serif, cursive;
+  background-color: #E2E8EB;
+  padding: 15px;
+}
+
+.inBox li:hover{
+  color: #989393;
+}
+#compose {
+  border: 2px solid red;
+  box-shadow: 3px 3px 3px #ABA9A9;
+  padding: 10px 30px;
+  background-color: #BA2222;
+  border-radius: 7px;
+  font-weight: bold;
+} 
 
 #senderGee {
   font-family: Gill Sans, sans-serif, cursive;
@@ -50,6 +68,15 @@ ul {
   font-size: 12px;
   margin: 0px;
   float: right;
+}
+
+#bodyGee {
+  margin: 10px 25px;
+  font-size: 13px;
+  padding: 10px;
+  border: 1px solid white;
+  border-radius: 7px;
+  background-color: #E2E8EB;
 }
 
 #clickMe {
