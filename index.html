@@ -5,10 +5,13 @@
     <script>
       window.onload = function(){
    
-        function loadInbox(message){
-    //ACCESS GEEMAIL DATA      
+   //ACCESS GEEMAIL DATA      
          for (var i = 0; i < window.geemails.length; i++){
-           
+         
+        function loadInbox(email){
+
+          var main = document.getElementById('main');
+    
     //CREATE DIV w/ ID arrayDiv
           var mailDiv = document.createElement('div');
             mailDiv.id = 'arrayDiv';
@@ -20,7 +23,7 @@
             mailHeader.className = 'mailHeader';
             mailDiv.appendChild(mailHeader);
 
-    //THIS FUNCTION CHANGES FONT COLOR WHEN MOUSEOVER/OUT
+            //THIS FUNCTION CHANGES FONT COLOR WHEN MOUSEOVER/OUT
            mailHeader.addEventListener('mouseover', function(){
                 //add event to var mailHeader so when it's mouseover, font color will change
              this.style.color = '#989393';  
@@ -32,42 +35,41 @@
                 //mouseout event will access css style to change color
                 //inherit- goes back to it's original style
            });
-          
+
     //CREATE AN ELEMENT IN DOM FOR SENDER DATA
           var mailSender = document.createElement('li');
                 //created first list with variable mailSender		
-            mailSender.id = 'senderGee';	
-                //gave mailSender and id of senderGee						
-            mailSender.innerHTML = message[i].sender;
+            mailSender.id = 'mailSender';	
+                //gave mailSender and id of mailSender						
+            mailSender.innerHTML = email.sender;
                 //HTML will access the sender var in window.geemail for loop		
             mailHeader.appendChild(mailSender);
                 //random sender will be printed in this 'li' 
     
     //CREATE AN ELEMENT IN DOM FOR SUBJECT DATA
           var mailSubject = document.createElement('li');
-            mailSubject.id = 'subjectGee';
-            mailSubject.innerHTML = message[i].subject;
+            mailSubject.id = 'mailSubject';
+            mailSubject.innerHTML = email.subject;
             mailHeader.appendChild(mailSubject);
 
     //CREATE AN ELEMENT IN DOM FOR DATE 
            var mailDate = document.createElement('li');
-            mailDate.id = 'dateGee';
-            mailDate.innerHTML = message[i].date;
+            mailDate.id = 'mailDate';
+            mailDate.innerHTML = email.date;
             mailHeader.appendChild(mailDate);
 
      //ADDED DIV FOR BODY     
           var bodyContent = document.createElement('div');
-            bodyContent.className = 'bodyDiv';
+            bodyContent.className = 'bodyContent';
             mailDiv.appendChild(bodyContent);
-      
                                        
     //CREATE AN ELEMENT IN DOM FOR BODY DATA
           var mailBody = document.createElement('p');
-            mailBody.id = 'bodyGee';
-            mailBody.innerHTML = message[i].body;
+            mailBody.id = 'mailBody';
+            mailBody.innerHTML = email.body;
             bodyContent.appendChild(mailBody);	
 
-    //EVENT SHOW AND HIDE BODY!
+             //EVENT SHOW AND HIDE BODY!
           var showBody = document.getElementById('main')[0];
                 //assigned 'main' in HTML a variable of showBody
             bodyContent.querySelectorAll('p')[0].style.display ='none';
@@ -84,11 +86,13 @@
                 //when user's mouseout of the 'p' section, content will not display
              });
 
-         } //END OF GEEMAIL DATA LOOP
+
+          } //END OF GEEMAIL DATA LOOP
+          var loadThis = window.geemails[i];
+            loadInbox(loadThis);
       } //END OF LOADINBOX FUNCTION
-          loadInbox(window.geemails);
-    
-    //SHOW INBOX COUNT AND APPEND TO THE ID GIVEN IN HTML
+         
+      //SHOW INBOX COUNT AND APPEND TO THE ID GIVEN IN HTML
           var count = document.getElementById('count');
                 //assign id 'count' to a variable so I can use it to add the total inbox count.
           var inboxTotal = window.geemails.length;
@@ -97,20 +101,18 @@
                 //creating text node with variable totalCnt
            count.appendChild(totalCount);
                 //append text node 'totalCount' to 'count'
-    
+
     //FUNCTION THAT WILL SETINTERVAL TO LOAD NEW MESSAGE
-          setInterval(function(getNewMessage) {
-            var getEm = document.getElementById('arrayDiv');
-              main.appendChild(getEm);
+          setInterval(function () {
+             var loadMe = getNewMessage(); //declared created getNewMessage function with var 'loadMe'
+                loadInbox(loadMe);//invoke function 'loadInbox' with argument 'loadMe'
+                console.log(this);//print 'this' (loadInbox(loadMe)) in console
+            
+             var total = inboxTotal++;//increment inboxTotal with var 'total'
+                 count.innerHTML = total;//
            
-           
-          count.innerHTML = inboxTotal++;
-                //updating inboxTotal every whatever seconds. 
-                //Computer counts in milliseconds. Why? idk.It's just set that way.
-          
-   
-         }, 7000);   
-   
+         }, 5000); //load new message every # second in # millisecond
+
       }; //END OF WINDOW.ONLOAD 
     </script>
 	</head>

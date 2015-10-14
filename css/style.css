@@ -12,7 +12,7 @@ body {
 .container {
   margin-left: 180px;
   margin-top: 5px;
-  overflow: scroll;
+  overflow: auto;
   height: 500px;
 }
 
@@ -22,7 +22,7 @@ body {
   font-family: Helvetica, sans-serif;
   background-color: #D1E1EC;
   box-shadow: 3px 3px #ABA9A9;
-  opacity: 0.75;
+  opacity: 0.85;
 }
 
 ul li {
@@ -54,25 +54,25 @@ ul {
   font-weight: bold;
 } 
 
-#senderGee {
+#mailSender {
   font-family: Gill Sans, sans-serif, cursive;
   font-style: normal;
   margin: 0px;
 }
 
-#subjectGee {
+#mailSubject {
   margin-top: 0px;
   margin-bottom: 0px;
   font-size: 12px;
 }
 
-#dateGee {
+#mailDate {
   font-size: 12px;
   margin: 0px;
   float: right;
 }
 
-#bodyGee {
+#mailBody {
   margin: 10px 25px;
   font-size: 13px;
   padding: 10px;
