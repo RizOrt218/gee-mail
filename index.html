@@ -102,6 +102,7 @@
                 loadInbox(loadMe);//invoke function 'loadInbox' with argument 'loadMe'
                 console.log(this);//print 'this' (loadInbox(loadMe)) in console
             
+              inboxTotal += 1; //this will start increment at 1 not 0!
              var total = inboxTotal++;//increment inboxTotal with var 'total'
                  count.innerHTML = total;//
            
@@ -112,7 +113,7 @@
 	</head>
 	<body>
     <header>
-      <h1><image src='http://screenshot.it.sftcdn.net/it/scrn/79000/79070/geemail-8.jpg' width='50' height='50'></image>  Gee-Mail</h1>
+      <image src='http://screenshot.it.sftcdn.net/it/scrn/79000/79070/geemail-8.jpg' width='50' height='50'></image> <h1 id='g'> Gee-Mail</h1>
     </header>
          <div>
         <ul class='inBox'>

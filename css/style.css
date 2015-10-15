@@ -1,6 +1,14 @@
 header {
   color: #FFF;
   padding-left: 20px;
+  margin-top: 0px;
+  border-bottom:1px solid White;
+}
+
+#g {
+    display: inline;
+    position: absolute;
+    top: -5px;
 }
 
 body {
@@ -42,8 +50,13 @@ ul {
   padding: 15px;
 }
 
-.inBox li:hover{
+.inBox a:hover{
   color: #989393;
+}
+
+.inBox a {
+  text-decoration: none;
+  color: black;
 }
 #compose {
   border: 2px solid red;
