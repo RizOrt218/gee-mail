@@ -2,6 +2,7 @@
 	<head>
 		<script src="js/mail-generator.js"></script>
 		<link href="css/style.css" rel="stylesheet" media="screen">
+    <title> Gee-Mail </title>
     <script>
       window.onload = function(){
    
@@ -53,7 +54,7 @@
             mailHeader.appendChild(mailSubject);
 
     //CREATE AN ELEMENT IN DOM FOR DATE 
-           var mailDate = document.createElement('li');
+          var mailDate = document.createElement('li');
             mailDate.id = 'mailDate';
             mailDate.innerHTML = email.date;
             mailHeader.appendChild(mailDate);
@@ -68,23 +69,16 @@
             mailBody.id = 'mailBody';
             mailBody.innerHTML = email.body;
             bodyContent.appendChild(mailBody);	
+            bodyContent.style.display='none';//accessed css to hide body
 
              //EVENT SHOW AND HIDE BODY!
-          var showBody = document.getElementById('main')[0];
-                //assigned 'main' in HTML a variable of showBody
-            bodyContent.querySelectorAll('p')[0].style.display ='none';
-                //this will find all 'p' form in variable bodyContent and access css to display: none
-            mailDiv.addEventListener('click', function(){
-                //added an event to variable mailDiv for a click function
-                this.querySelectorAll('p')[0].style.display = 'block';
-                //this--when user clicks on any 'mailDiv' section only that certain 'p' form will show
-              });
-            
-          var hideBody = document.getElementById('main')[0];
-            bodyContent.addEventListener('mouseout', function(){
-               this.querySelectorAll('p')[0].style.display = 'none';
-                //when user's mouseout of the 'p' section, content will not display
-             });
+          mailHeader.onclick = function(){
+           if(bodyContent.style.display === 'none'){//when clicked and its hidden
+              bodyContent.style.display = 'block';//access css to show bodyContent
+          } else {
+              bodyContent.style.display = 'none';//if not hide bodyContent onclick
+          }
+          };
 
 
           } //END OF GEEMAIL DATA LOOP
@@ -118,15 +112,15 @@
 	</head>
 	<body>
     <header>
-      <h1><image src='http://screenshot.it.sftcdn.net/it/scrn/79000/79070/geemail-8.jpg'></image></br>GeeMail</h1>
+      <h1><image src='http://screenshot.it.sftcdn.net/it/scrn/79000/79070/geemail-8.jpg' width='50' height='50'></image>  Gee-Mail</h1>
     </header>
          <div>
         <ul class='inBox'>
           <li><button type="button" id='compose'>Compose</button></li></br></br>
-          <li>Inbox (<span id='count'></span>)</li></br></br>
-          <li>Important</li></br></br>
-          <li>Sent</li></br></br>
-          <li>Trash</li></br>
+          <li><a href="#">Inbox (<span id='count'></span>)</a></li></br></br>
+          <li><a href="#">Important</a></li></br></br>
+          <li><a href="#">Sent</a></li></br></br>
+          <li><a href="#">Trash</a></li></br>
         </ul>
       </div>
   		<div class="container" id="main">
